@@ -1,7 +1,7 @@
 version: 1.0.{build}
 build: off
 
-image: Visual Studio 2022
+image: Windows Server 2019
 
 environment:
   NGROK_AUTH_TOKEN:
