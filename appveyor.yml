@@ -10,7 +10,7 @@ environment:
 install:
   - ps: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
   - ps: Expand-Archive ngrok.zip -DestinationPath .
-  - ps: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+  - ps: .\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
 
 before_build:
   - ps: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0
@@ -19,4 +19,4 @@ before_build:
   - ps: Set-LocalUser -Name "appveyor" -Password (ConvertTo-SecureString -AsPlainText "Mienphi99" -Force)
 
 build_script:
-  - ps: .\ngrok\ngrok.exe tcp --region=ap 3389
+  - ps: .\ngrok.exe tcp --region=ap 3389
