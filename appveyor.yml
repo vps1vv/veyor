@@ -5,7 +5,7 @@ image: Visual Studio 2022
 
 environment:
   NGROK_AUTH_TOKEN:
-    secure: D972joZzWAwM33YYAWGC2spq6br0GaJDEMUPQY86tLr0zDq1eRrQBAEfmsKJh9v7ekit0bDrPgMWj2C
+    secure: D972joZzWAwM33YYAWGC2spq6br0GaJDEMUPQY86tLr0zDq1eRrQBAEfmsKJh9v7ekit0bDrPgMWj2C+zTqubA==
 
 install:
   - ps: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
