@@ -1,0 +1,21 @@
+version: 1.0.{build}
+
+image: Visual Studio 2022
+
+environment:
+  NGROK_AUTH_TOKEN:
+    secure: D972joZzWAwM33YYAWGC2spq6br0GaJDEMUPQY86tLr0zDq1eRrQBAEfmsKJh9v7ekit0bDrPgMWj2C+zTqubA==
+
+install:
+  - powershell -Command "Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip"
+  - powershell -Command "Expand-Archive ngrok.zip -DestinationPath ."
+  - powershell -Command ".\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN"
+
+before_build:
+  - powershell -Command "Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0"
+  - powershell -Command "Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'"
+  - powershell -Command "Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name 'UserAuthentication' -Value 1"
+  - powershell -Command "Set-LocalUser -Name 'appveyor' -Password (ConvertTo-SecureString -AsPlainText 'Mienphi99' -Force)"
+
+build_script:
+  - powershell -Command ".\ngrok\ngrok.exe tcp --region=ap 3389"
