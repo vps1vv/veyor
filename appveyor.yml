@@ -1,7 +1,7 @@
 version: 1.0.{build}
 build: off
 
-image: Windows Server 2019
+image: macOS
 
 environment:
   NGROK_AUTH_TOKEN:
