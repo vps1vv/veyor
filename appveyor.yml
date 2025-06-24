@@ -8,7 +8,7 @@ environment:
     secure: D972joZzWAwM33YYAWGC2spq6br0GaJDEMUPQY86tLr0zDq1eRrQBAEfmsKJh9v7ekit0bDrPgMWj2C+zTqubA==
 
 install:
-  - ps: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+  - ps: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-darwin-arm64.zip -OutFile ngrok.zip
   - ps: Expand-Archive ngrok.zip -DestinationPath .
   - ps: .\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
 
